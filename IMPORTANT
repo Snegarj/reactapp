@@ -1,0 +1,20 @@
+//ACTION
+export const setproduct=(product)=>{
+    return {
+    type:SET_PRODUCT,
+    payload:products , };};
+
+  //reducer  
+const initialstate={product:[{
+    id:1,
+    title:"snegarj",
+    categary:"programmer",
+},],};
+
+
+//reducerindex.js
+import {combinedReducer} from "redux";
+import { ProductReducer } from "./productReducer";
+export const Reducer=combinedReducer({
+allProduct:ProductReducer,
+});
