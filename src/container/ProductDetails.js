@@ -19,8 +19,7 @@ export const ProductDetail=()=>{
           .get(`https://fakestoreapi.com/products/${id}`)
           .catch((err) => {
             console.log("Err: ", err);
-          });
-        console.log(response.data);
+
     
       dispatch(selectedProduct(response.data));
           };
@@ -63,5 +62,5 @@ export const ProductDetail=()=>{
              )}
             </div>    </div>
         );
-}
+};
 
