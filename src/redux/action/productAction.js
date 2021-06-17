@@ -12,6 +12,6 @@ export const selectedProduct=(product)=>{
 };};
 export const removeselectedProduct=(product)=>{
     return{
-    type:Actiontypes.  REMOVE_SELECTED_PRODUCT,
+    type:Actiontypes.REMOVE_SELECTED_PRODUCT,
     payload:product ,
 };};
