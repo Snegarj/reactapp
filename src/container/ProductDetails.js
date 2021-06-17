@@ -62,6 +62,6 @@ export const ProductDetail=()=>{
                 </div>
              )}
             </div>    </div>
-        )
+        );
 }
 
