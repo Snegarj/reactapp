@@ -1,17 +1,21 @@
-
-import   React,{useEffect} from "react";
-
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { selectedProduct,removeselectedProduct} from "../redux/action/productAction";
 
-import { useDispatch } from "react-redux";
+
 export const ProductDetail=()=>{
 
+  const {productId} = useParams();
     let product = useSelector((state) => state.product);
     const { image, title, price, category, description } = product;
-    const {productId} = useParams();
+    //id
+    //api 
+    //api to store action dispatch.dispatch( data sent to selected)
+    //productid=true and not null call fetchproduct by using useeffect
+
     const dispatch=useDispatch();
     console.log(productId);
     const fetchproducts = async (id) => {
@@ -19,9 +23,11 @@ export const ProductDetail=()=>{
           .get(`https://fakestoreapi.com/products/${id}`)
           .catch((err) => {
             console.log("Err: ", err);
-
+          });
+        console.log(response.data);
     
       dispatch(selectedProduct(response.data));
+      console.log(response.data);
           };
           useEffect(()=>{ if (productId && productId !== "") fetchproducts(productId);
           return () => {
@@ -29,8 +35,8 @@ export const ProductDetail=()=>{
           };}, [productId]);
 
         return (
-            <div className="ui grid container"  style={{top:"50px",    marginTop:"5rem"}}> 
-              <div className="ui grid container">
+          
+              <div className="ui grid container"   style={{top:"50px",    marginTop:"5rem"}}>
       {Object.keys(product).length === 0 ? (
         <div>...Loading</div>
       ) : (
@@ -39,7 +45,7 @@ export const ProductDetail=()=>{
                     <div className="ui vertical divider"></div>
                     <div className="middle aligned row">
                       <div className="column lp">
-                        <img className="ui fluid image" src={image}  style={{height:"400px"}} />
+                        <img className="ui fluid image" src={image}  style={{height:"400px"}} alt="hello" />
                       </div>
                       <div className="column rp">
                         <h1>{title}</h1>
@@ -60,7 +66,7 @@ export const ProductDetail=()=>{
              
                 </div>
              )}
-            </div>    </div>
+            </div>    
         );
 };
 
